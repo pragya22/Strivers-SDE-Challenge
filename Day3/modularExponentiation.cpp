@@ -1,21 +1,25 @@
-https://www.codingninjas.com/codestudio/problems/search-in-a-2d-matrix_8230773?challengeSlug=striver-sde-challenge
+https://www.codingninjas.com/codestudio/problems/modular-exponentiation_8230803?challengeSlug=striver-sde-challenge
 
-bool searchMatrix(vector<vector<int>>& mat, int target) {
-    int m= mat.size();
-    int n=mat[0].size();
-    int i=0;
-    int j=n-1;
-    int element;
+#include <bits/stdc++.h>
 
-    while(i<=m-1 && j>=0)
-    {   element=mat[i][j];
-        if(element==target)
-            return true;
-        else if(target<element)
-            j--;
-        else if(target>element)  
-            i++;  
-    }  
-    return false;     
-        
+int modularExponentiation(int x, int n, int m) {
+	// Write your code here.
+	long long  power=1;
+	int num=n;
+	long int xx=x;
+	while(num)
+	{
+		if(num%2==0)
+		{	
+			xx=( (xx % m)* (xx % m) ) % m;
+			num=num/2;
+		}
+		else
+		{	
+			power = ( (power % m)* (xx % m) ) % m;	
+			num=num-1;
+		}
+
+	}
+	return (int)power;
 }
